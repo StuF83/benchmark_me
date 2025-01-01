@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise  :database_authenticatable, :registerable,
+          :recoverable, :rememberable, :validatable
+
   validates :username, presence: true, uniqueness: true
   validate :age_must_be_over_18
 
@@ -7,7 +12,7 @@ class User < ApplicationRecord
   private
 
   def age_must_be_over_18
-    if age.present? && age > 18.years.ago.to_date
+    if date_of_birth.present? && date_of_birth > 18.years.ago.to_date
       errors.add(:date_of_birth, "must be at least 18 years old")
     end
   end

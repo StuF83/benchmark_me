@@ -1,5 +1,5 @@
 class User::DashboardController < ApplicationController
   def show
-    @user = current_user
+    @user = User.first
   end
 end
