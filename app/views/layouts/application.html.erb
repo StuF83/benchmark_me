@@ -23,6 +23,9 @@
   </head>
 
   <body>
+    <nav>
+      <%= current_user.username %>
+    </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
