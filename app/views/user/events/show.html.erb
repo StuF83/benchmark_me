@@ -1,3 +1,6 @@
 <h1>Welcome to your event show page</h1>
 
 <%= render "show" %>
+
+<%= link_to "Edit", edit_user_event_path(@event) %>
+<%= link_to"New Result", new_user_event_result_path(@event) %>
