@@ -23,6 +23,10 @@
   </head>
 
   <body>
+    <nav>
+      <%= link_to "Dashboard", user_dashboard_path %>
+      <%= current_user.username %>
+    </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

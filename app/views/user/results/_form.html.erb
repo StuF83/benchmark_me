@@ -1,0 +1,22 @@
+<% if @result.errors.any? %>
+    <div id="error_explanation">
+        <p><%= pluralize(@result.errors.count, "error") %> prohibited this result from being saved:</p>
+        <ul>
+            <% @result.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<%= form_with model: [ @event, @result], url: user_event_results_path do |form| %>
+    <div>
+        <%= form.label :score %>
+        <%= form.text_field :score %>
+    </div>
+    <div>
+        <%= form.label :attempt_date %>
+        <%= form.date_field :attempt_date %>
+    </div>
+    <%= form.submit %>
+<% end %>

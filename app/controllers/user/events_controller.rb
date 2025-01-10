@@ -14,7 +14,7 @@ class User::EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.new(events_params)
+    @event = current_user.events.new(event_params)
     if @event.save
       redirect_to user_event_path(@event), notice: "Event created successfully"
     else
@@ -23,9 +23,22 @@ class User::EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to user_event_path(@event), notice: "Event updated successfully"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
-  def events_params
+  def event_params
     params.expect(event: [ :name, :description ])
   end
 end
