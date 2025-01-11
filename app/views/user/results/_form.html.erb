@@ -11,8 +11,7 @@
 
 <%= form_with model: [ @event, @result], url: user_event_results_path do |form| %>
     <div>
-        <%= form.label :score %>
-        <%= form.text_field :score %>
+        <%= result_input_fields(@event) %>
     </div>
     <div>
         <%= form.label :attempt_date %>

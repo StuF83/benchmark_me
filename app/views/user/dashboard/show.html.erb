@@ -5,4 +5,6 @@
     <% @events.each do |event| %>
         <%= render event %> 
     <% end %>
+    <br>
+    <%= link_to "Add New Event", new_user_event_path %>
 </div>
