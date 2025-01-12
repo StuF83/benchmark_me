@@ -11,6 +11,11 @@ class User::ResultsController < ApplicationController
       value = (params[:result]["hours"].to_i * 60 * 60) +
               (params[:result]["minutes"].to_i * 60) +
               (params[:result]["seconds"].to_i)
+    elsif @event.units == "meters"
+      value = ((params[:result]["kilometers"].to_i * 1000) +
+              (params[:result]["meters"]).to_f * 1000).round
+    else
+      value = params[:result]["value"]
     end
 
     @result = @event.results.new(attempt_date: result_params["attempt_date"], score: value)
@@ -28,6 +33,6 @@ class User::ResultsController < ApplicationController
   end
 
   def result_params
-    params.require(:result).permit(:attempt_date, :hours, :minutes, :seconds)
+    params.require(:result).permit(:attempt_date, :hours, :minutes, :seconds, :kilometers, :meters)
   end
 end

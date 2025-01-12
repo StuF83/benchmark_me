@@ -8,11 +8,13 @@ module User::ResultsHelper
         number_field_tag("result[seconds]", nil, placeholder: "Seconds", class: "form-control")
       end
     when "kilograms"
-      text_field_tag("result[value]", nil, placeholder: "Enter weight in kg", class: "form-control")
+      number_field_tag("result[value]", nil, min: 1, max: 999, placeholder: "Enter weight in kg", class: "form-control")
     when "meters"
-      text_field_tag("result[value]", nil, placeholder: "Enter distance in meters", class: "form-control")
+      number_field_tag("result[kilometers]", "0", min: 1, max: 999, class: "form-control") +
+      number_field_tag("result[meters]", ".0", step: 0.1, min: 0.0, max: 0.9, class: "form-control") +
+      content_tag(:p, "km")
     when "integer"
-      text_field_tag("result[value]", nil, placeholder: "Enter repetitions", class: "form-control")
+      number_field_tag("result[value]", 1, min: 1, max: 999, placeholder: "Enter repetitions", class: "form-control")
     else
       text_field_tag("result[value]", nil, placeholder: "Enter value", class: "form-control")
     end

@@ -15,7 +15,7 @@
     </div>
     <div>
         <%= form.label :attempt_date %>
-        <%= form.date_field :attempt_date %>
+        <%= form.date_field :attempt_date, value: Date.today, max: Date.today %>
     </div>
     <%= form.submit %>
 <% end %>
