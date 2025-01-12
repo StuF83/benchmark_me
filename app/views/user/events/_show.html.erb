@@ -2,8 +2,10 @@
 <br>
 <%= @event.description %>
 <br>
-    <ul>
-<% @event.results.each do |result| %>
-    <li><%= result.score %></li>
-<% end %>
-    </ul>
+<ul>
+    <% @event.results.each do |result| %>
+        <li>
+        <%= format_result(@event, result.score) %>
+        </li>
+    <% end %>
+</ul>
