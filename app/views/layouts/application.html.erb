@@ -25,7 +25,11 @@
   <body>
     <nav>
       <%= link_to "Dashboard", user_dashboard_path %>
-      <%= current_user.username %>
+      <% if current_user %>
+        <p><%= current_user.username %></p>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path %>
+      <% end %>
     </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

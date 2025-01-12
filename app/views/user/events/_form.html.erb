@@ -18,5 +18,14 @@
         <%= form.label :description %>
         <%= form.text_field :description %>
     </div>
+    <div>
+        <% if @event.persisted? %>
+            <p><%= measurement_description(@event) %></p>
+            <p>Units cannot be edited once an event is created</p>
+        <% else %>
+            <%= form.label :measurement %>
+            <%= form.select :units, [["Time", "seconds"], ["Weight", "kilograms"], ["Distance", "meters"], ["Repetitions", "integer"]] %>
+        <% end %>
+    </div>
     <%= form.submit %>
 <% end %>
